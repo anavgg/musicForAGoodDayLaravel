@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <style type="text/css">
-        @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
   
         body{
             margin: 0;
@@ -35,7 +35,7 @@
 
         .navbar-brand , .nav-link, .my-form, .login-form
         {
-            font-family: Raleway, sans-serif;
+            font-family: 'Roboto';
             color: white;
             
         }
@@ -71,8 +71,25 @@
         }
     .btn-custom:hover,
     .btn-custom:focus {
-        background-color: #1E203C;
-        border-color: #1E203C;
+        background-color: #F9471C;
+        border-color: #F9471C;
+    }
+
+    .form-control{
+        border: 2px solid #f9471C;
+    }
+
+    .containerFooter {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    bottom: 20px;
+    }
+
+    #textFooter {
+    font-family: 'Consolas';
+    color: white;
+    text-align: center;
     }
 
 
@@ -107,7 +124,12 @@
                     </li>
                 @endguest
             </ul>
-  
+
+        </div>
+        <div class="containerFooter">
+            <p id="textFooter">
+                made with ❤ by City Tech
+            </p>
         </div>
     </div>
 </nav>
