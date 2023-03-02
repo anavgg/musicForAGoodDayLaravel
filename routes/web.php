@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\SongController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,14 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-  
+//Establecemos la vista principal(home)
+Route::get('/', function() {
+    return view('layout');
+});
+
+//Esto define y genera todas las rutas del crud(podeis ver todas las rutas con el comando php artisan route:list)
+Route::resource('songs', SongController::class);
+
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
