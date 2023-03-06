@@ -13,8 +13,8 @@ class Song extends Model
      *
      * @var array<int, string>
      */
+    protected $table = "songs";
     protected $fillable = [
-       'user_id',
        'song',
        'artist',
        'gender',
