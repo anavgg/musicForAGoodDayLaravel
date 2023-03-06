@@ -1,4 +1,4 @@
-<?php
+git <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -19,17 +19,14 @@ Route::get('/', function() {
     return view('layout');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
-
 //Esto define y genera todas las rutas del crud(podeis ver todas las rutas con el comando php artisan route:list)
 Route::resource('songs', SongController::class);
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('index', [AuthController::class, 'index'])->name('index.post'); 
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+
