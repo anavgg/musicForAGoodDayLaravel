@@ -35,26 +35,28 @@
                   <button id="btnActionForm" class="btn btn-primary btn-custom" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText">Done!</span></button>&nbsp;&nbsp;&nbsp;
                 </div>
               </form>
-              <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Fake buscador">
-              <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox" name="played-songs"> Played songs
-                                      </label>
-              </div>
-              <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox" name="unplayed-songs"> Unplayed songs
-                                      </label>
-              </div>
 
-            </div>
-
-                        
+              <!-- Buscador -->
+              <form method="get" action="{{ route('search') }}">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="txtNombre" name="q" placeholder="Buscar...">
+                </div>
+                  <div class="checkbox">
+                      <label>
+                            <input type="checkbox" name="played-songs"> Played songs
+                      </label>
+                  </div>
+                <button type="submit" class="btn btn-primary btn-custom">Buscar</button>
+              </form>
+              
+            </div>        
                   </div>
               </div>
           </div>
       </div>
   </div>
 @endsection
+
+
 </body>
 </html>

@@ -33,3 +33,4 @@ Route::post('index', [AuthController::class, 'index'])->name('index.post');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/search', 'SearchController@search')->name('search');
