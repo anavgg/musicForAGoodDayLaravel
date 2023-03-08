@@ -47,14 +47,13 @@
                                       </label>
               </div>
 
-            </div>
-
-                        
+                     </div>  
                   </div>
               </div>
           </div>
       </div>
   </div>
+
 @endsection
 </body>
 </html>

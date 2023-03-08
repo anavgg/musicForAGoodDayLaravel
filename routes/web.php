@@ -23,6 +23,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/edit', function () {
+    return view('edit');
+});
+
 //Esto define y genera todas las rutas del crud(podeis ver todas las rutas con el comando php artisan route:list)
 Route::resource('songs', SongController::class);
 
