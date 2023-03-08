@@ -106,6 +106,10 @@
         background-color: #F9471C;
     }
 
+    .form-control{
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
 
 
     </style>

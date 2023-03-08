@@ -20,7 +20,6 @@
             <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Song's name">
             <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Artist">
             <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Song's gender">
-            <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Your name">
             <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Youtube URL">
       </div>
       <div class="modal-footer">
