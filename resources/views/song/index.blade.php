@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 <html lang="en">
-<head>
+<head></head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,48 +9,37 @@
 <body>
 @section('content')
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Song</th>
-      <th scope="col">Artist</th>
-      <th scope="col">Gender</th>
-      <th scope="col">URL</th>
-      <th scope="col">Image</th>
-      <th scope="col">User</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container d-flex justify-content-md-center">
+  <div class="w-75 p-3 overflow-hidden" style="min-height: 540px; max-height: 540px; background-color: #eee; border-radius: 1em; overflow: scroll;">
+  <div class="song d-flex justify-content-md-center row text-primary">
+  @foreach ($songs as $item)
+    <div class="col-md-3 text-center">
 
-    <!-- @foreach ($songs as $item)
-        <tr>
-        
-            <td>{{ $item->song }}</td>
-            <td>{{ $item->artist }}</td>
-            <td>{{ $item->gender }}</td>
-            <td><a href="{{ $item->youtube }}">URL</a> </td>
-            <td><img src="/uploads/{{ $item->image }}" width="100px" height="100px" alt="Image"> </td>
-            <td>{{ $item->user->name }}</td>
-        </tr>
-    @endforeach -->
-
-    @foreach ($songs as $item)
-    <tr>
-        <td>{{ $item->song }}</td>
-        <td>{{ $item->artist }}</td>
-        <td>{{ $item->gender }}</td>
-        <td><a href="{{ $item->youtube }}">URL</a></td>
-        <td><img src="{{ $item->image }}" /></td>
-        <td>{{ $item->user->name }}</td>
-    </tr>
-    <tr>
-        <td>Image Path:</td>
-        <td colspan="5">{{ asset('public' . ($item->image)) }}</td>
-    </tr>
-@endforeach
       
-  </tbody>
-</table>
+      <img src="{{ $item->image }}"  width="75px" height="75px" alt="Song's Cover" />
+      <h5 class="text-primary">{{ $item->song }}</h5>
+      <p class="text-primary mb-1">{{ $item->artist }}</p>
+      <p class="text-primary mb-1">{{ $item->gender }}</p>
+      
+    </div>
+    <div class="col-md-3 text-center center mt-1">
+      <br/>
+      <a href=" {{ $item->youtube }}" target="_blank" class="btn btn-primary mb-1">▶</a>
+      @if ($item->user_id == Auth::user()->id)
+      <a href="" class="btn btn-success mb-1">✎</a>
+      <a href="{{ route('song.destroy', $item->id) }}" class="btn btn-danger mb-1">X</a>
+      @endif
+      <br>
+      <input class="form-check-input" type="checkbox" role="switch" name="listened" id="flexSwitchCheckDefault" value="">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Listened</label>
+      <p class="text-secondary">Song sent by <br/> 💜{{ $item->user->name }}💜</p>
+    </div>
+  @endforeach
+    </div>
+  </div>
+</div>
+
+
 
 
 

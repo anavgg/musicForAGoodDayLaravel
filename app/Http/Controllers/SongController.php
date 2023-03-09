@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,99 +26,42 @@ class SongController extends Controller
 
     public function store(Request $request)
 {
-    $rules = [
-        'song' => 'required|max:255',
-        'artist' => 'required|max:255',
-        'gender' => 'required|max:255',
-        'youtube' => 'required|url',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'listened' => 'required|in:yes,no'
-    ];
-
-    $messages = [
-        'song.required' => 'The song field is required.',
-        'artist.required' => 'The artist field is required.',
-        'gender.required' => 'The gender field is required.',
-        'youtube.required' => 'The youtube field is required.',
-        'youtube.url' => 'The youtube field must be a valid URL.',
-        'image.image' => 'The image field must be an image.',
-        'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
-        'image.max' => 'The image may not be greater than 2048 kilobytes.',
-        'listened.required' => 'The listened field is required.',
-        'listened.in' => 'The listened field must be either "yes" or "no".'
-    ];
-
-    $validator = Validator::make($request->all(), $rules, $messages);
-
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
 
     $song = new Song();
+
+    if( $request->hasFile('image')) {
+        $file =$request->file('image');
+        $destinationPath = 'img/uploads/';
+        $filename = time() . '-' . $file->getClientOriginalName();
+        $uploadSuccess = $request->file('image')->move($destinationPath, $filename);
+        $song->image = $destinationPath . $filename;
+    }
+
     $song->user_id = auth()->user()->id;
     $song->song = $request->post('song');
     $song->artist = $request->post('artist');
     $song->gender = $request->post('gender');
     $song->youtube = $request->post('youtube');
-    $song->listened = $request->post('listened');
-    $imagePath = $request->file('image')->store('/uploads');
-    $song->image = asset($imagePath);
-
-    // $image = $request->file('image');
-    // $imageName = time() . '.' . $image->getClientOriginalExtension();
-    // $image->move(public_path('uploads'), $imageName);
-
-    // $song->image = '/uploads' . $imageName;
-
-    // if($request->hasFile('image')) {
-    //     $image = $request->file('image');
-    //     $filename = time() . '.' . $image->getClientOriginalExtension();
-    //     $path = 'public/uploads' . $filename;
-    //     Storage::putFileAs($path, $image, $filename);
-    //     $song->image = $filename;
-    // }
+    if($request->filled('listened')) {
+        $song->listened = $request->input('listened');
+    } else {
+        $song->listened = 'no';
+    }
     $song->save();
     return redirect()->route('song.index')->with('success', 'Song created successfully!');
-    // $validatedData = $request->validate([
-    //     'song' => 'required|string|max:255',
-    //     'artist' => 'required|string|max:255',
-    //     'gender' => 'required|string|max:255',
-    //     'youtube' => 'required|string|max:255',
-    //     'image' => 'nullable|image|max:2048',
-    //     'listened' => 'required|in:yes,no',
-    // ]);
-
-    // $song = new Song;
-    // $song->user_id = auth()->user()->id;
-    // $song->song = $validatedData['song'];
-    // $song->artist = $validatedData['artist'];
-    // $song->gender = $validatedData['gender'];
-    // $song->youtube = $validatedData['youtube'];
-    // $song->listened = $request->listened ?? 'no';
-
-    // if ($request->hasFile('image')) {
-    //     $image = $request->file('image');
-    //     $filename = time() . '_' . $image->getClientOriginalName();
-    //     $path = $image->storeAs('public/uploads', $filename);
-    //     $song->image = $filename;
-    // }
-
-    // $song->save();
-
-    // return redirect()->route('song.index')->with('success', 'Song created successfully!');
 }
 
 
     public function show(Song $song)
     //Mostramos los detalles de una cancion especifica (el parámetro $song es una instancia del modelo Song que se pasará a la vista songs.show)
     {
-        return view('songs.show', compact('song'));
+        return view('songs.show', compact('songs'));
     }
 
     public function edit(Song $song)
     //Mostramos un formulario para que el usuario pueda editar una canción existente (el parámetro $song es una instancia del modelo Song que se pasará a la vista songs.edit)
     {
-        return view('songs.edit', compact('song'));
+        return view('songs.edit', compact('songs'));
     }
 
     public function update(Request $request, Song $song)
@@ -133,10 +77,23 @@ class SongController extends Controller
         return redirect()->route('songs.index')->with('success', 'Song updated successfully!');
     }
 
-    public function destroy(Song $song)
+    public function destroy($id)
     // Elimina una cancion de la base de datos
     {
+        $song = Song::findOrFail($id);
+
+        if($song->user_id != Auth::user()->id) {
+            return redirect()->back()->withErrors(['message', 'No tienes permiso para eliminar esta cancion']);
+        } 
         $song->delete();
-        return redirect()->route('songs.index')->with('success', 'Song deleted successfully!');
+        return redirect()->action([SongController::class, 'index']);
+        // if(auth()->user()->id == $song->user_id) {
+        //     $song->delete();
+        //     return redirect()->route('songs.index')->with('success', 'Song deleted successfully!');
+        // } else {
+        //     return redirect()->back()->with('error', 'You are not authorized to delete this song.');
+        // }
+        // $song->delete();
+        // return redirect()->route('songs.index')->with('success', 'Song deleted successfully!');
     }
 }

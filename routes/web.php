@@ -17,7 +17,7 @@ use App\Http\Controllers\SessionsController;
 
 // Establecemos la vista principal(home)
 Route::get('/', function() {
-    return view('song.create');
+    return view('home');
 })->middleware('auth');
 
 
@@ -48,4 +48,7 @@ Route::get('/store', [SongController::class, 'store'])->name('song.store');
 Route::post('/store', [SongController::class, 'store'])->name('song.store');
 Route::get('/edit', [SongController::class, 'edit'])->name('song.edit');
 Route::get('/show', [SongController::class, 'show'])->name('song.show');
+Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
+// Route::delete('/song/{song}', [SongController::class, 'destroy'])->name('song.destroy');
+
 
