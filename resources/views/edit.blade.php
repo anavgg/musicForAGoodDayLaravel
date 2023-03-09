@@ -1,5 +1,6 @@
 @extends('layout')
 
+
 @section('modalBootstrap')
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
@@ -16,11 +17,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-            <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Song's name">
-            <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Artist">
-            <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Song's gender">
-            <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Youtube URL">
+      <div class="modal-body" id="formEditarSong">
+            <input class="form-control" id="e-Nombre" name="txtNombre" type="text" placeholder="Song's name">
+            <input class="form-control" id="e-Artist" name="txtNombre" type="text" placeholder="Artist">
+            <input class="form-control" id="e-Gender" name="txtNombre" type="text" placeholder="Song's gender">
+            <input class="form-control" id="e-Youtube" name="txtNombre" type="text" placeholder="Youtube URL">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
