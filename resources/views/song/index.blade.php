@@ -27,8 +27,13 @@
       <a href=" {{ $item->youtube }}" target="_blank" class="btn btn-primary mb-1">▶</a>
       @if ($item->user_id == Auth::user()->id)
       <a href="" class="btn btn-success mb-1">✎</a>
-      <a href="{{ route('song.destroy', $item->id) }}" class="btn btn-danger mb-1">X</a>
+      <a href="{{ route('song.destroy', $item->id) }}" class="btn btn-danger mb-1" onclick="return deleteSong('Are you sure you want to delete this song?')">X</a>
       @endif
+      <script>
+        function deleteSong(value) {
+          action = confirm(value) ? true:event.preventDefault()
+        }
+      </script>
       <br>
       <input class="form-check-input" type="checkbox" role="switch" name="listened" id="flexSwitchCheckDefault" value="">
       <label class="form-check-label" for="flexSwitchCheckDefault">Listened</label>
