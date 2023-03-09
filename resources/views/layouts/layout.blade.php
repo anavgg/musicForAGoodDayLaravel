@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Laravel - ItSolutionStuff.com</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <style type="text/css">
@@ -99,45 +103,44 @@
 
     </style>
 </head>
-<body>
+<body>    
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">City Tech</a> -->
+            <img class="navbar-brand" src="img/logo.svg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
     
-<nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
-    <div class="container">
-        <!-- <a class="navbar-brand" href="#">City Tech</a> -->
-        <img class="navbar-brand" src="img/logo.svg">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-   
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                    </li>
-                @endguest
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    @if(auth()->check())
+                        <li class="nav-item">
+                            <p class="nav-link">Welcome <b>{{ auth()->user()->username }}</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login.destroy') }}">Logout</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login.index') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register.index') }}">Register</a>
+                        </li>
+                    @endif
+                </ul>
 
+            </div>
+            <div class="containerFooter">
+                <p id="textFooter">
+                    made with ❤ by City Tech
+                </p>
+            </div>
         </div>
-        <div class="containerFooter">
-            <p id="textFooter">
-                made with ❤ by City Tech
-            </p>
-        </div>
-    </div>
-</nav>
-  
-@yield('content')
-     
+    </nav>
+
+    @yield('content')
+    
 </body>
 </html>
