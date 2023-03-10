@@ -107,5 +107,21 @@ class SongController extends Controller
         return redirect()->action([SongController::class, 'index']);
     }
 
+    public function search(Request $request) {
+
+        $query = $request->input('query');
+
+        $songs = Song::where('song', 'LIKE', '%' . $query . '%')
+            ->orWhere('artist', 'LIKE', '%' . $query . '%' )
+            ->paginate(9);
+        
+        if($songs->isEmpty()) {
+            $message = 'No results found for the search: ' . $query;
+            return view('song.index', ['songs' => $songs, $message]);
+        }
+        
+        return view('song.index', ['songs' => $songs]);
+    }
+
     
 }

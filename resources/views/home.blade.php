@@ -1,12 +1,14 @@
 @extends('layouts.layout')
-<html lang="en">
+<!-- <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upload your own song</title>
 </head>
-<body>
+<body> -->
+@section('title', 'Home')
+
 @section('content')
     <div class="container d-flex justify-content-md-center">
         <div class="w-75 p-3 overflow-hidden" style="min-height: 540px; max-height:540px; background-color: #eee; border-radius: 1em; overflow:scroll;">

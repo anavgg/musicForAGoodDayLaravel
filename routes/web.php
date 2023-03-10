@@ -60,7 +60,8 @@ Route::put('/update/{id}', [SongController::class, 'update'])->name('song.update
 Route::get('/show', [SongController::class, 'show'])->name('song.show');
 Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
 // Route::delete('/song/{song}', [SongController::class, 'destroy'])->name('song.destroy');
-Route::get('/search', [SearchController::class, 'search'])->name('search');
+// Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/songs/search', [SongController::class, 'search'])->name('song.search');
 Route::post('/songs/{song}mark-as-listened', [ListenedController::class, 'markAsListened'])->name('song.markAsListened');
 Route::get('/listened', [ListenedController::class, 'index'])->name('listened.index');
 

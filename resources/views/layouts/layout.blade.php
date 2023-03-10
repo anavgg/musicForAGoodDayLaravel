@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Laravel - ItSolutionStuff.com</title>
+    <title>@yield('title') - Good Morning Coder</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
   
@@ -137,7 +137,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
         <div class="container">
             <!-- <a class="navbar-brand" href="#">City Tech</a> -->
-            <img class="navbar-brand" src="img/logo.svg">
+            <img class="navbar-brand" src="{{asset('img/logo.svg') }}">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -161,6 +161,9 @@
                     @endif
                 </ul>
 
+            </div>
+            <div id="content">
+                
             </div>
             <div class="containerFooter">
                 <p id="textFooter">
