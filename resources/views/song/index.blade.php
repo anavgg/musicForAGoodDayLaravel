@@ -35,10 +35,10 @@
     </div>
     <div class="col-md-3 text-center center mt-1">
       <br/>
-      <a href=" {{ $item->youtube }}" target="_blank" class="btn btn-primary mb-1">▶</a>
+      <a href=" {{ $item->youtube }}" target="_blank" class="btn btn-primary btn-sm mb-1">▶</a>
       @if ($item->user_id == Auth::user()->id)
-      <a href="" class="btn btn-success mb-1">✎</a>
-      <a href="{{ route('song.destroy', $item->id) }}" class="btn btn-danger mb-1" onclick="return deleteSong('Are you sure you want to delete this song?')">X</a>
+      <a href="/edit/{{$item->id }}" class="btn btn-success btn-sm mb-1">✎</a>
+      <a href="{{ route('song.destroy', $item->id) }}" class="btn btn-danger btn-sm mb-1" onclick="return deleteSong('Are you sure you want to delete this song?')">X</a>
       @endif
       <script>
         function deleteSong(value) {

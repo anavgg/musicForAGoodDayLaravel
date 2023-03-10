@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -58,22 +59,38 @@ class SongController extends Controller
         return view('songs.show', compact('songs'));
     }
 
-    public function edit(Song $song)
+    public function edit($id)
     //Mostramos un formulario para que el usuario pueda editar una canción existente (el parámetro $song es una instancia del modelo Song que se pasará a la vista songs.edit)
     {
-        return view('song.edit');
+        $song = Song::findOrFail($id);
+        return view('song.edit', compact('song'));
     }
 
     public function update(Request $request, $id)
     //Actualizamos una canción existente en la base de datos. La función recibe los datos enviados desde el formulario de edit  y actualiza las propiedades correspondientes del modelo Song. Guarda los cambios en la base de datos y redirige al usuario a songs.index con un mensaje de exito
     {
         $song = Song::findOrFail($id);
-        $song->song = $request->song;
-        $song->artist = $request->artist;
-        $song->gender = $request->gender;
-        $song->youtube = $request->youtube;
-        $song->image = $request->image;
-        $song->listened = $request->listened;
+        $song->song = $request->input('song');
+        $song->artist = $request->input('artist');
+        $song->gender = $request->input('gender');
+        $song->youtube = $request->input('youtube');
+
+        if ($request->hasFile('image')) {
+            //Eliminar la imagen anterior
+            if(File::exists($song->image)) {
+                File::delete($song->image);
+            }
+
+            //Subir la nueva imagen al directorio de uploads
+            $file = $request->file('image');
+            $destinationPath = 'img/uploads/';
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($destinationPath, $filename);
+
+            //Actualizar la ruta de la imagen en la base de datos
+            $song->image = $destinationPath . $filename;
+        }
+        // $song->listened = $request->listened;
         $song->save();
         return redirect()->route('song.index')->with('success', 'Song updated successfully!');
     }

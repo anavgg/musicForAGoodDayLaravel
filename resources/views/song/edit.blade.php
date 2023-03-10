@@ -1,34 +1,45 @@
 @extends('layouts.layout')
-
-
-@section('modalBootstrap')
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
-  E
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="formEditarSong">
-            <input class="form-control" id="e-Nombre" name="txtNombre" type="text" placeholder="Song's name">
-            <input class="form-control" id="e-Artist" name="txtNombre" type="text" placeholder="Artist">
-            <input class="form-control" id="e-Gender" name="txtNombre" type="text" placeholder="Song's gender">
-            <input class="form-control" id="e-Youtube" name="txtNombre" type="text" placeholder="Youtube URL">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" class="modalButton">Save changes</button>
-      </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit your own song</title>
+</head>
+<body>
+@section('content')
+    <div class="container d-flex justify-content-md-center">
+        <div class="w-75 p-3 overflow-hidden" style="min-height: 540px; max-height:540px; background-color: #eee; border-radius: 1em; overflow:scroll;">
+        <h4 class="text-primary text-center mb-3">Edit your own song</h4>
+        <!-- Formulario -->
+        <form action="{{ route('song.update', $song->id) }}" method="POST" enctype="multipart/form-data" class="d-flex justify-content-around text-primary mb-3">
+            @csrf
+            @method('PUT')
+            <div class="form-group">
+                <label for="song">Song's name:</label>
+                <input id="song" name="song" type="text" class="form-control" value="{{$song->song}}">
+                <label for="youtube">Youtube URL:</label>
+                <input id="youtube" name="youtube" type="text" class="form-control" value="{{$song->youtube}}">
+            </div>
+            <div class="form-group">
+                <label for="artist">Artist:</label>
+                <input id="artist" name="artist" type="text" class="form-control" value="{{$song->artist}}">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control" id="image" name="image" value="{{$song->image}}">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input id="gender" name="gender" type="text" class="form-control" value="{{$song->gender}}">
+                <button type="submit" class="btn btn-primary m-4 p-2">Edit</button>
+            </div>
+        </form>
+        <div class="container d-flex justify-content-md-center">
+            <a href="{{ route('song.index') }}" class="btn btn-primary" style="background-color: blue;">See all songs</a>
+        </div>
     </div>
-  </div>
-</div>
-  @endsection
-  @yield('modalBootstrap')
+    </div>
+@endsection
+
+
+</body>
+</html>
