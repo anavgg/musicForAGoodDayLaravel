@@ -46,9 +46,10 @@ class Song extends Model
     {
         return $this->belongsTo(User::class);
     }
-    // public function getImageAttribute($value)
-    // {
-    //     return '/images' . $value;
-    // }
+    
+    public function listened()
+    {
+        return $this->hasMany(Listened::class);
+    }
 }
 

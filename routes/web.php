@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListenedController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\RegisterController;
@@ -60,5 +61,6 @@ Route::get('/show', [SongController::class, 'show'])->name('song.show');
 Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
 // Route::delete('/song/{song}', [SongController::class, 'destroy'])->name('song.destroy');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
-
+Route::post('/songs/{song}mark-as-listened', [ListenedController::class, 'markAsListened'])->name('song.markAsListened');
+Route::get('/listened', [ListenedController::class, 'index'])->name('listened.index');
 

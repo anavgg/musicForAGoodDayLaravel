@@ -105,13 +105,7 @@ class SongController extends Controller
         } 
         $song->delete();
         return redirect()->action([SongController::class, 'index']);
-        // if(auth()->user()->id == $song->user_id) {
-        //     $song->delete();
-        //     return redirect()->route('songs.index')->with('success', 'Song deleted successfully!');
-        // } else {
-        //     return redirect()->back()->with('error', 'You are not authorized to delete this song.');
-        // }
-        // $song->delete();
-        // return redirect()->route('songs.index')->with('success', 'Song deleted successfully!');
     }
+
+    
 }
