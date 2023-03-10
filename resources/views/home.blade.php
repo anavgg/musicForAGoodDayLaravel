@@ -33,7 +33,7 @@
             </div>
         </form>
         <div class="container d-flex justify-content-md-center">
-            <a href="{{ route('song.index') }}" class="btn btn-primary">See all songs</a>
+            <a href="{{ route('song.index') }}" class="btn btn-primary" style="background-color: blue;">See all songs</a>
         </div>
     </div>
     </div>
