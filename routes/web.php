@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SessionsController;
 /*
 |--------------------------------------------------------------------------
@@ -57,5 +58,6 @@ Route::post('/update', [SongController::class, 'update'])->name('song.update');
 Route::get('/show', [SongController::class, 'show'])->name('song.show');
 Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
 // Route::delete('/song/{song}', [SongController::class, 'destroy'])->name('song.destroy');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
