@@ -143,6 +143,10 @@
             </button>
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline mx-auto" method="GET" action="{{ route('song.search') }}">
+                <input class="form-control mx-auto mr-sm-0" type="search" placeholder="Search" aria-label="Search" name="query">
+                <button class="btn btn-primary my-5 my-sm-0" type="submit">Search</button>
+            </form>
                 <ul class="navbar-nav ml-auto">
                     @if(auth()->check())
                         <li class="nav-item">
@@ -162,18 +166,18 @@
                 </ul>
 
             </div>
-            <div id="content">
-                
-            </div>
-            <div class="containerFooter">
-                <p id="textFooter">
-                    made with ❤ by City Tech
-                </p>
-            </div>
         </div>
     </nav>
+    <div id="content">
+        @yield('content')
+    </div>
 
-    @yield('content')
-    
+    <footer>
+        <div class="containerFooter">
+            <p id="textFooter">
+                made with ❤ by City Tech
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

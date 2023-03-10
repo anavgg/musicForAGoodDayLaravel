@@ -15,7 +15,7 @@ class SongController extends Controller
     public function index()
     //Obtenemos todas las canciones de la base de datos y las pasamos a la vista songs.index para que se muestren
     {
-        $songs = Song::all();
+        $songs = Song::paginate(6);
         return view('song.index', compact('songs'));
     }
 
@@ -116,11 +116,11 @@ class SongController extends Controller
             ->paginate(9);
         
         if($songs->isEmpty()) {
-            $message = 'No results found for the search: ' . $query;
-            return view('song.index', ['songs' => $songs, $message]);
+            $msg = 'No results found for the search: ' . $query;
+            return view('song.search', compact('songs', 'msg'));;
         }
         
-        return view('song.index', ['songs' => $songs]);
+        return view('song.search', compact('songs'));
     }
 
     

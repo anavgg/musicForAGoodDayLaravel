@@ -10,19 +10,8 @@
 @section('content')
 
 <div class="container d-flex justify-content-md-center">
-  <div class="w-75 p-3 overflow-hidden" style="min-height: 540px; max-height: 540px; background-color: #eee; border-radius: 1em; overflow: scroll;">
+  <div class="w-75 p-3 overflow-hidden" style="min-height: 650px; max-height: 650px; background-color: #eee; border-radius: 1em; overflow: scroll;">
   <div class="song d-flex justify-content-md-center row text-primary">
-    <form method="GET" action="{{ route('song.search') }}">
-      <div class="form-group">
-        <input type="text" class="form-control" id="txtNombre" name="query" placeholder="Search songs....">
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="played-songs">Played Songs
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary btn-custom">Buscar</button>
-    </form>
   @foreach ($songs as $item)
     <div class="col-md-3 text-center">
 
@@ -56,6 +45,9 @@
 
     </div>
   @endforeach
+      <div class="pagination-container" style="margin-top: 3em;">
+      {{ $songs->links('pagination::bootstrap-5') }}
+      </div>
     </div>
   </div>
 </div>

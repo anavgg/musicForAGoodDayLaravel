@@ -65,3 +65,4 @@ Route::get('/songs/search', [SongController::class, 'search'])->name('song.searc
 Route::post('/songs/{song}mark-as-listened', [ListenedController::class, 'markAsListened'])->name('song.markAsListened');
 Route::get('/listened', [ListenedController::class, 'index'])->name('listened.index');
 
+

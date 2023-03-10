@@ -1,12 +1,5 @@
 @extends('layouts.layout')
-<!-- <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload your own song</title>
-</head>
-<body> -->
+
 @section('title', 'Home')
 
 @section('content')
@@ -35,7 +28,8 @@
             </div>
         </form>
         <div class="container d-flex justify-content-md-center">
-            <a href="{{ route('song.index') }}" class="btn btn-primary" style="background-color: blue;">See all songs</a>
+            <a href="{{ route('song.index') }}" class="btn btn-primary">See all songs</a>
+            <a href="{{ route('listened.index') }}" class="btn btn-primary">See your listened songs</a>
         </div>
     </div>
     </div>
