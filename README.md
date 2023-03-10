@@ -24,14 +24,17 @@ This project consists of developing a web page in which F5 coders can enter song
 ## Technology Stack
 | Tech | Type | Use |
 | --- | --- | --- |
+| ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) | Language | Backend |
+| ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) | Language | Frontend |
+| ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | Language | Frontend |
 | ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white) | Framework | Frontend and Backend |
-| ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) | Framework | Frontend |
+| ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) | Library | Frontend |
 | ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) | Library | Package Manager |
 | ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) | Database Management System | Database |
 
 ## Screenshots
 
-## Installation
+## Installation 
 1. Clone the project
 ```bash
  git clone https://github.com/AidaSousa/musicForAGoodDayLaravel.git
