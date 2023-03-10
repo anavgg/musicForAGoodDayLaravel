@@ -21,6 +21,10 @@ Route::get('/', function() {
 })->middleware('auth');
 
 
+Route::get('/edit', function () {
+    return view('edit');
+});
+
 //Esto define y genera todas las rutas del crud(podeis ver todas las rutas con el comando php artisan route:list)
 // Route::resource('songs', SongController::class);
 
@@ -47,6 +51,9 @@ Route::get('/create', [SongController::class, 'create'])->name('song.create');
 Route::get('/store', [SongController::class, 'store'])->name('song.store');
 Route::post('/store', [SongController::class, 'store'])->name('song.store');
 Route::get('/edit', [SongController::class, 'edit'])->name('song.edit');
+Route::post('/edit', [SongController::class, 'edit'])->name('song.edit');
+Route::get('/update', [SongController::class, 'update'])->name('song.update');
+Route::post('/update', [SongController::class, 'update'])->name('song.update');
 Route::get('/show', [SongController::class, 'show'])->name('song.show');
 Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
 // Route::delete('/song/{song}', [SongController::class, 'destroy'])->name('song.destroy');

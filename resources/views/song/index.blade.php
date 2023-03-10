@@ -17,9 +17,9 @@
 
       
       <img src="{{ $item->image }}"  width="75px" height="75px" alt="Song's Cover" />
-      <h5 class="text-primary">{{ $item->song }}</h5>
-      <p class="text-primary mb-1">{{ $item->artist }}</p>
-      <p class="text-primary mb-1">{{ $item->gender }}</p>
+      <h5 class="text-primary">{{ ucfirst($item->song) }}</h5>
+      <p class="text-primary mb-1">{{ ucfirst($item->artist) }}</p>
+      <p class="text-primary mb-1">{{ ucfirst($item->gender) }}</p>
       
     </div>
     <div class="col-md-3 text-center center mt-1">
@@ -35,9 +35,28 @@
         }
       </script>
       <br>
-      <input class="form-check-input" type="checkbox" role="switch" name="listened" id="flexSwitchCheckDefault" value="">
+      <input class="form-check-input" type="checkbox" role="switch" name="listened" id="flexSwitchCheckDefault" value="" onchange="toggleForm()">
       <label class="form-check-label" for="flexSwitchCheckDefault">Listened</label>
       <p class="text-secondary">Song sent by <br/> 💜{{ $item->user->name }}💜</p>
+      <!-- Formulario para actualizar el estado -->
+      <form id="update-form" action="{{ route('song.update', $item->id) }}" method="POST">
+        @csrf
+        <input type="hidden" name="listened" value="no">
+        <input type="checkbox" name="listened" value="yes" onchange="document.getElementById('update-form').submit()" {{ $item->listened ? 'checked' : ''}}>
+        <label class="form-check-label" for="flexSwitchCheckDefault">Listened</label>
+      </form>
+      <script>
+        function toggleForm() {
+          const checkbox = document.getElementById('flexSwitchCheckDefault');
+          const form = document.getElementById('update-form');
+
+          if(checkbox.checked) {
+            form.style.display = 'block';
+          } else {
+            form.style.display = 'none';
+          }
+        }
+      </script>
     </div>
   @endforeach
     </div>

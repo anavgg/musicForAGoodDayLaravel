@@ -32,6 +32,11 @@
                 <button type="submit" class="btn btn-primary m-4 p-2">Add</button>
             </div>
         </form>
+        <div class="container d-flex justify-content-md-center">
+            <a href="{{ route('song.index') }}" class="btn btn-primary">See all songs</a>
+        </div>
     </div>
     </div>
 @endsection
+</body>
+</html>
