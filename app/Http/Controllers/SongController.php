@@ -9,20 +9,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+
 
 class SongController extends Controller
 {
     public function index()
     //Obtenemos todas las canciones de la base de datos y las pasamos a la vista songs.index para que se muestren
     {
-        $songs = Song::paginate(6);
+        $songs = Song::paginate(3);
         return view('song.index', compact('songs'));
     }
 
     public function create()
     //Mostramos un formulario para que el usuario pueda crear una nueva cancion
     {
-        return view('song.create');
+        return view('home');
     }
 
     public function store(Request $request)
@@ -35,7 +37,7 @@ class SongController extends Controller
         $destinationPath = 'img/uploads/';
         $filename = time() . '-' . $file->getClientOriginalName();
         $uploadSuccess = $request->file('image')->move($destinationPath, $filename);
-        $song->image = $destinationPath . $filename;
+         $song->image = $destinationPath . $filename;
     }
 
     $song->user_id = auth()->user()->id;

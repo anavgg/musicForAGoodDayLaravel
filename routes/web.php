@@ -49,7 +49,7 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
     ->name('login.destroy');
 
 Route::get('/index', [SongController::class, 'index'])->name('song.index');
-Route::get('/create', [SongController::class, 'create'])->name('song.create');
+Route::get('/create', [SongController::class, 'create'])->name('home');
 Route::get('/store', [SongController::class, 'store'])->name('song.store');
 Route::post('/store', [SongController::class, 'store'])->name('song.store');
 Route::get('/edit/{id}', [SongController::class, 'edit'])->name('song.edit');
@@ -59,8 +59,6 @@ Route::post('/update', [SongController::class, 'update'])->name('song.update');
 Route::put('/update/{id}', [SongController::class, 'update'])->name('song.update');
 Route::get('/show', [SongController::class, 'show'])->name('song.show');
 Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
-// Route::delete('/song/{song}', [SongController::class, 'destroy'])->name('song.destroy');
-// Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/songs/search', [SongController::class, 'search'])->name('song.search');
 Route::post('/songs/{song}mark-as-listened', [ListenedController::class, 'markAsListened'])->name('song.markAsListened');
 Route::get('/listened', [ListenedController::class, 'index'])->name('listened.index');

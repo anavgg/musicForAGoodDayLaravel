@@ -8,149 +8,34 @@
     <title>@yield('title') - Good Morning Coder</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <style type="text/css">
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-  
-        body{
-            margin: 0;
-            font-size: .9rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: white;
-            text-align: left;
-            /* background-color: #2E315B; */
-            background:url('./img/finalbackground.jpg');
-            background-position: center; 
-            background-repeat: cover no-repeat;
-        }
-
-        .navbar{
-            color: white;
-        }
-        .navbar-laravel
-        {
-            box-shadow: 0 2px 4px rgba(0,0,0,.04);
-            color: white;
-        }
-
-        .navbar-brand{
-            width: 5%;
-        }
-
-        .navbar-brand , .nav-link, .my-form, .login-form
-        {
-            font-family: 'Roboto';
-            color: white;
-            
-        }
-
-        .card{
-            color: #2E315B;
-            background-color: #D9D9D9;
-        }
-        .my-form
-        {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        .my-form .row
-        {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        .login-form
-        {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        .login-form .row
-        {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .btn-custom {
-            background-color: #2E315B;
-            border-color: #2E315B;
-        }
-    .btn-custom:hover,
-    .btn-custom:focus {
-        background-color: #F9471C;
-        border-color: #F9471C;
-    }
-
-    .form-control{
-        border: 2px solid #f9471C;
-    }
-
-    .containerFooter {
-    display: block;
-    position: fixed;
-    width: 100vw;
-    bottom: 20px;
-    }
-
-    #textFooter {
-    font-family: 'Consolas';
-    color: white;
-    text-align: center;
-    }
-
-    .modal-content {
-        color: #2E315B;
-        background-color: #D9D9D9;
-    }
-    .btn-primary{
-        background-color:#f9471C;
-    }
-    .btn-primary:hover{
-        background-color: #F9471C;
-    }
-    .form-control{
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
-<body>    
+<body class="body">    
     <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
         <div class="container">
             <!-- <a class="navbar-brand" href="#">City Tech</a> -->
-            <img class="navbar-brand" src="{{asset('img/logo.svg') }}">
+            <a href="{{ route('song.index') }}"><img class="navbar-brand" src="{{asset('img/logo.svg') }}"></a>
+                <form class="form-inline mx-auto" method="GET" action="{{ route('song.search') }}">
+                    <input class="search-i form-control mx-auto mr-sm-0" type="search" placeholder="Search" aria-label="Search" name="query">
+                    <button class="search-b btn btn-primary my-5 my-sm-0" type="submit">Search</button>
+                </form>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline mx-auto" method="GET" action="{{ route('song.search') }}">
-                <input class="form-control mx-auto mr-sm-0" type="search" placeholder="Search" aria-label="Search" name="query">
-                <button class="btn btn-primary my-5 my-sm-0" type="submit">Search</button>
-            </form>
+              
                 <ul class="navbar-nav ml-auto">
                     @if(auth()->check())
                         <li class="nav-item">
                             <p class="nav-link">Welcome <b>{{ auth()->user()->username }}</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Add Song</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login.destroy') }}">Logout</a>

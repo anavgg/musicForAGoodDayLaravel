@@ -1,37 +1,31 @@
 @extends('layouts.layout')
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+
+@section('title', 'Login')
 
 @section('content')
 
 <main class="login-form">
-    <div class="cotainer">
+    <div class="container-login">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
+                <div class="card-login card">
+                    <div class="header-login card-header">Login</div>
                     <div class="card-body">
     
                         <form action="" method="POST">
                             @csrf
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <!-- <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label> -->
                                 <div class="col-md-6">
-                                    <input type="email" id="email" class="form-control" name="email" placeholder="Email" required autofocus>
+                                    <input type="email" id="email" class="login form-control" name="email" placeholder="Email" required autofocus>
                                     
                                 </div>
                             </div>
     
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <!-- <label for="password" class="col-md-4 col-form-label text-md-right">Password</label> -->
                                 <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+                                    <input type="password" id="password" class="login form-control" name="password" placeholder="Password" required>
 
                                     @error('message')
                                         <p class="text-danger">{{ $message }}</p>
@@ -51,7 +45,7 @@
                             </div>
     
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-custom">
+                                <button type="submit" class="btn-login btn btn-primary btn-custom">
                                     Login
                                 </button>
                             </div>

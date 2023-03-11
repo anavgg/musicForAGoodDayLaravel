@@ -12,7 +12,7 @@ class ListenedController extends Controller
 {
     public function index() {
 
-        $listeneds = Listened::with(['user', 'song'])->get();
+        $listeneds = Listened::with(['user', 'song'])->paginate(3);
         return view('listened.index', compact('listeneds'));
         // $listened = Listened::all();
         // return view('listened.index', compact('listened'));
