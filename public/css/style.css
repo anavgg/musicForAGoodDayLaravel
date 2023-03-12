@@ -7,7 +7,6 @@
     line-height: 1.6;
     color: white;
     text-align: left;
-    /* background-color: #2E315B; */
     background:url('/img/finalbackground.jpg');
     background-position: center;
     background-size: cover; 
@@ -63,15 +62,6 @@
     background-color: #2E315B;
     border-color: #2E315B;
 }
-.btn-custom:hover,
-.btn-custom:focus {
-background-color: #F9471C;
-border-color: #F9471C;
-}
-
-/* .form-control{
-border: 2px solid #f9471C;
-} */
 
 .containerFooter {
 display: block;
@@ -90,12 +80,7 @@ text-align: center;
 color: #2E315B;
 background-color: #D9D9D9;
 }
-.btn-primary{
-background-color:#f9471C;
-}
-.btn-primary:hover{
-background-color: #F9471C;
-}
+
 .form-control{
 margin-top: 1.5rem;
 margin-bottom: 1.5rem;
@@ -219,12 +204,6 @@ margin-bottom: 1.5rem;
     font-size: 3em;
     color: #4c3c99;
 }
-
-/* .song-form {
-    color: #4c3c99;
-    margin-bottom: 0;
-    font-weight: bold;
-} */
 
 .input-song {
     width: 15em;

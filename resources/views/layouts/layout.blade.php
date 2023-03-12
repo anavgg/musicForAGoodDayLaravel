@@ -9,15 +9,12 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <style type="text/css">
     </style>
 </head>
 <body class="body">    
     <nav class="navbar navbar-expand-lg navbar-dark navbar-laravel">
         <div class="container">
-            <!-- <a class="navbar-brand" href="#">City Tech</a> -->
             <a href="{{ route('song.index') }}"><img class="navbar-brand" src="{{asset('img/logo.svg') }}"></a>
                 <form class="form-inline mx-auto" method="GET" action="{{ route('song.search') }}">
                     <input class="search-i form-control mx-auto mr-sm-0" type="search" placeholder="Search" aria-label="Search" name="query">

@@ -14,8 +14,6 @@ class ListenedController extends Controller
 
         $listeneds = Listened::with(['user', 'song'])->paginate(3);
         return view('listened.index', compact('listeneds'));
-        // $listened = Listened::all();
-        // return view('listened.index', compact('listened'));
     }
 
     public function markAsListened(Song $song) {

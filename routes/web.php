@@ -23,13 +23,6 @@ Route::get('/', function() {
 })->middleware('auth');
 
 
-// Route::get('/edit', function () {
-//     return view('edit');
-// });
-
-//Esto define y genera todas las rutas del crud(podeis ver todas las rutas con el comando php artisan route:list)
-// Route::resource('songs', SongController::class);
-
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register.index');

@@ -11,19 +11,14 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <!-- <label for="song">Song's name:</label> -->
                 <input class="input-song" id="song" name="song" type="text" class="form-control" value="{{$song->song}}">
-                <!-- <label for="youtube">Youtube URL:</label> -->
                 <input class="input-song" id="youtube" name="youtube" type="text" class="form-control" value="{{$song->youtube}}">
             </div>
             <div class="form-group">
-                <!-- <label for="artist">Artist:</label> -->
                 <input class="input-song" id="artist" name="artist" type="text" class="form-control" value="{{$song->artist}}">
-                <!-- <label for="image">Image:</label> -->
                 <input class="input-song" type="file" class="form-control" id="image" name="image" value="{{$song->image}}">
             </div>
             <div class="form-group">
-                <!-- <label for="gender">Gender:</label> -->
                 <input class="input-song" id="gender" name="gender" type="text" class="form-control" value="{{$song->gender}}">
                 <button type="submit" class="add btn btn-primary m-4 p-2">Edit</button>
             </div>
