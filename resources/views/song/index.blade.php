@@ -23,13 +23,13 @@
             @if ($item->user_id == Auth::user()->id)
             <a href="{{ route('song.destroy', $item->id) }}" class="btn" onclick="return deleteSong('Are you sure you want to delete this song?')"><img class="options" src="/img/delete.png"/></a>
             <br/>
+            <a href="/edit/{{$item->id }}" class="btn"><img class="options" src="/img/edit.png"/></a>
+            @endif
             @if ($item->listened == 'no')
             <form class="listen" action="{{ route('song.markAsListened', $item) }}" method="POST">
-              @csrf
-              <button class="btn-xs ml-2"type="submit">✔️</button>
+            @csrf
+            <button class="btn-xs ml-2"type="submit">✔️</button>
             </form>
-            @endif
-            <a href="/edit/{{$item->id }}" class="btn"><img class="options" src="/img/edit.png"/></a>
             @endif
             <script>
               function deleteSong(value) {
