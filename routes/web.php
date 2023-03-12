@@ -50,12 +50,8 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 
 Route::get('/index', [SongController::class, 'index'])->name('song.index');
 Route::get('/create', [SongController::class, 'create'])->name('home');
-Route::get('/store', [SongController::class, 'store'])->name('song.store');
 Route::post('/store', [SongController::class, 'store'])->name('song.store');
 Route::get('/edit/{id}', [SongController::class, 'edit'])->name('song.edit');
-Route::post('/edit/{id}', [SongController::class, 'edit'])->name('song.edit');
-Route::get('/update', [SongController::class, 'update'])->name('song.update');
-Route::post('/update', [SongController::class, 'update'])->name('song.update');
 Route::put('/update/{id}', [SongController::class, 'update'])->name('song.update');
 Route::get('/show', [SongController::class, 'show'])->name('song.show');
 Route::get('destroy/{id}', [SongController::class, 'destroy'])->name('song.destroy');
