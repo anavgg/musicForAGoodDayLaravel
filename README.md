@@ -12,7 +12,6 @@
 * [Screenshots](#screenshots)
 * [Installation](#installation)
 * [Methodology](#methodology)
-* [Next Steps](#next-steps)
 * [Team Members](#team-members)
 * [License](#license)
 
@@ -33,7 +32,14 @@ This project consists of developing a web page in which F5 coders can enter song
 | ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) | Database Management System | Database |
 
 ## Screenshots
-<p align="center"><img src="public\img\Screenshots.gif" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\1.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\2.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\3.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\4.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\5.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\6.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\7.png" width="1000" alt="Project screenshots"></p>
+<p align="center"><img src="public\img\8.png" width="1000" alt="Project screenshots"></p>
 
 ## Installation 
 1. Clone the project
@@ -53,8 +59,6 @@ This project consists of developing a web page in which F5 coders can enter song
 - TDD
 * Agile with SCRUM
 + Pair and solo programming
-
-## Next Steps
 
 ## Team Members
 | Name | Role | Github Profile |
