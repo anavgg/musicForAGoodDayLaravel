@@ -33,6 +33,7 @@ This project consists of developing a web page in which F5 coders can enter song
 | ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) | Database Management System | Database |
 
 ## Screenshots
+<p align="center"><img src="public\img\Screenshots.gif" width="1000" alt="Project screenshots"></p>
 
 ## Installation 
 1. Clone the project
